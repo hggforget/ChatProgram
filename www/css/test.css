@@ -1,0 +1,144 @@
+
+/**全部的样式start**/
+
+body {
+    color: #363636;
+    background-color: #f6f6f6;
+}
+
+p {
+    display: inline;
+    color: #868686;
+}
+/**全部的样式end**/
+/**顶部导航栏start**/
+/**顶部导航栏背景色start**/
+/*.head {
+    background: #303030;
+}*/
+/**顶部导航栏背景色end**/
+/*顶部导航栏置顶start*/
+/*.aui-bar {
+    position: fixed;
+}*/
+/*顶部导航栏置顶end*/
+/**顶部导航栏end**/
+/**主要内容部分start**/
+/*.main{
+  margin-top: 3.5rem;
+}*/
+/*修改下划线样式start*/
+.aui-list .aui-list-item {
+    background: none;
+}
+.aui-media-list-item-inner {
+    margin-right: 1.25rem;
+    border-bottom: 1px #f6f6f6 solid;
+}
+.aui-list {
+    background: none;
+}
+/*修改下划线样式end*/
+/*头像框的样式及间距start*/
+.aui-list .aui-list-item-media {
+    width: 3.5rem;
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+}
+.aui-list .aui-list-item {
+    color: #363636;
+    min-height: 3.5rem;
+    background: none;
+}
+/*头像框的样式及间距end*/
+/*修改灰色字色start*/
+.aui-list .aui-list-item-text {
+    color: #868686;
+}
+/*修改灰色字色end*/
+/*修改姓名职业的间距字色start*/
+.aui-list .aui-list-item-title {
+    color: #363636;
+}
+.career {
+    color: #363636 !important;
+}
+.name {
+    font-weight: bolder;
+}
+/*修改姓名职业的间距字色end*/
+/*电话图标样式start*/
+.icon {
+    color: #868686;
+}
+.icon-active {
+    color: #F5862D!important;
+}
+/*电话图标样式end*/
+/*左边字母样式start*/
+.letter_left_single {
+    line-height: 3.5rem;
+    text-align: center;
+    display: inline;
+    float: left;
+}
+.color_white {
+    color: #fff;
+}
+/*左边字母样式end*/
+/*右边字母样式start*/
+.right-letter {
+    width: 5%;
+    height: 600px;
+    position: fixed;
+    right: 0.5rem;
+    top: 6rem;
+    z-index: 999;
+}
+.letter_single {
+    margin: 0;
+    color: #bcbcbc;
+    font-size: 0.6rem;
+    text-align: center;
+    display: block;
+}
+.test {
+    font-size: 0.6rem;
+}
+.orange {
+    color: #f5862d;
+}
+.big {
+    background: #fce4b2;
+    opacity: 0.7;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 1.3rem;
+    text-align: center;
+    line-height: 2.2rem;
+    position: fixed;
+    right: 3.5rem;
+    top: 4rem;
+    color: #f5862d;
+    font-size: 1.3rem;
+    display: none;
+}
+.big-active {
+    display: block;
+}
+/*右边字母样式end*/
+/**主要内容部分end**/
+#aui-chat-footer{
+    background-color:#f6f6f6;
+}
+#aui-footer,#aui-chat-footer{
+    width: 100%;
+    position: fixed;
+}
+#aui-footer>div,#aui-chat-footer{
+    display: flex;
+    bottom: 0;
+    flex-direction: column;
+}
+#aui-chat-footer>div{
+    padding: 0.3rem;
+}

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, please refer to the docs:
+            https://cordova.apache.org/docs/en/latest/
+        Some notes:
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+    <!--    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+       -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" type="text/css" href="aui-master/css/api.css" />
+        <link rel="stylesheet" type="text/css" href="aui-master/css/aui.2.0.css"/>
+        <link rel="stylesheet" href="aui-master/css/aui.css">
+        <link rel="stylesheet" href="css/test.css">
+        <title>Hello World</title>
+    </head>
+    <body>
+    <header class="aui-bar aui-bar-nav aui-bar-warning aui-padded-10" style="position:fixed">
+
+        <a class="aui-btn aui-btn-warning aui-pull-left">
+           <img src="img/头像.jpg" class="aui-img-round" style="height: 70%;">
+        </a>
+        <div class="aui-title" >黄宝</div>
+        <div class="aui-pull-right">
+            <a class="aui-btn aui-btn-warning  aui-pull-left">
+                <span class="aui-iconfont aui-icon-plus"></span>
+            </a>
+            <a class="aui-btn aui-btn-warning  aui-pull-right">
+                <span class="aui-iconfont aui-icon-menu"></span>
+            </a>
+        </div>
+
+    </header>
+
+    <div class="main aui-clearfix"style="margin-top: 3.0rem;">
+        <!-- 右边字母 -->
+        <div class="right-letter" onclick="change()">
+            <ul class="test" id="test">
+                <li class="big" id="big">A</li>
+                <a href="#first" class="letter_single">#</a>
+                <a href="#a" class="letter_single">A</a>
+                <a href="#b" class="letter_single">B</a>
+                <a href="#c" class="letter_single">C</a>
+                <a href="#d" class="letter_single">D</a>
+                <a href="#e" class="letter_single">E</a>
+                <a href="#f" class="letter_single">F</a>
+                <a href="#g" class="letter_single">G</a>
+                <a href="#h" class="letter_single">H</a>
+                <a href="#i" class="letter_single">I</a>
+                <a href="#j" class="letter_single">J</a>
+                <a href="#k" class="letter_single">K</a>
+                <a href="#l" class="letter_single">L</a>
+                <a href="#m" class="letter_single">M</a>
+                <a href="#n" class="letter_single">N</a>
+                <a href="#o" class="letter_single">O</a>
+                <a href="#p" class="letter_single">P</a>
+                <a href="#q" class="letter_single">Q</a>
+                <a href="#r" class="letter_single">R</a>
+                <a href="#s" class="letter_single">S</a>
+                <a href="#t" class="letter_single">T</a>
+                <a href="#u" class="letter_single">U</a>
+                <a href="#v" class="letter_single">V</a>
+                <a href="#w" class="letter_single">W</a>
+                <a href="#x" class="letter_single">X</a>
+                <a href="#y" class="letter_single">Y</a>
+                <a href="#z" class="letter_single">Z</a>
+
+            </ul>
+        </div>
+
+        <!-- 通讯录 -->
+        <div class="contacts" id="contacts"></div>
+        <div class="aui-card-list">
+            <div class="aui-card-list-content">
+                <ul class="aui-list aui-media-list">
+                    <li class="aui-list-item aui-list-item-middle aui-clearfix aui-padded-l-0" id="friend">
+                      <!--  <p class="letter_left_single color_white" id="first">#</p>-->
+                        <div class="aui-media-list-item-inner">
+                            <div class="aui-list-item-media">
+                                <img src="img/头像.jpg" class="aui-img-round aui-list-img-sm">
+                                <!--<i class="aui-iconfont aui-icon-qq" style="font-size:30px; color: red;"></i>-->
+                            </div>
+                            <div class="aui-list-item-inner">
+                                <div class="aui-list-item-text">
+                                    <div class="aui-list-item-title">
+                                        <div class="aui-list-item-text aui-list-item-left">
+                                            <div class="aui-list-item-title aui-font-size-16 name">008</div>
+                                            <div class="aui-list-item-text aui-font-size-14 career aui-margin-l-10">sdasdd</div>
+                                        </div>
+                                        <div class="aui-list-item-text">
+                                            10086
+                                        </div>
+                                    </div>
+                                    <a href="tel:10086">
+                                        <div class="aui-list-item-right icon-more-info">
+                                            <i class="aui-iconfont aui-icon-phone" style="font-size:20px; color: red;"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <footer class="aui-nav aui-bar-tab" id="aui-footer" style="position: fixed">
+        <div class="aui-col-xs-3 aui-text-center active-warning">
+            <span class="aui-iconfont aui-icon-comment" ></span>
+            <p class="aui-text-center aui-font-size-12">消息</p>
+        </div>
+        <div class="aui-col-xs-3 aui-text-center">
+            <span class="aui-iconfont aui-icon-search"></span>
+            <p class="aui-text-center aui-font-size-12">搜索</p>
+        </div>
+        <div class="aui-col-xs-3 aui-text-center">
+            <span class="aui-iconfont aui-icon-my"></span>
+            <p class="aui-text-center aui-font-size-12">联系人</p>
+        </div>
+        <div class="aui-col-xs-3 aui-text-center">
+            <span class="aui-iconfont aui-icon-more"></span>
+            <p class="aui-text-center aui-font-size-12">更多</p>
+        </div>
+    </footer>
+    <script type="text/javascript" src="../script/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript" src="../script/APICloud-rest-SHA10.js"></script>
+    <script type="text/javascript" src="../script/APICloud-rest-SHA1.js"></script>
+    <script type="text/javascript">
+        apiready = function() {
+        }
+        //点击放大代码
+        var letterSize; //单个字母的字体大小
+        var big = document.getElementById('big');
+        var menus;
+        var test2 = document.getElementById("test");
+        var x = test2.getElementsByTagName("a");
+
+        function change() {
+            // alert(1);
+            // alert($(obj).text());
+            //div点击事件
+            //把状态设为放大状态
+            for (var i = 0; i < x.length; i++) {
+                x[i].index = i;
+                x[i].onclick = function() {
+                    for (var i = 0; i < x.length; i++) {
+                        x[i].style.color = "#BCBCBC";
+                    }
+                    x[this.index].style.color = "#F5862d";
+                    var a = x[this.index].text;
+                    $("#big").html(a);
+                    $api.addCls(big, 'big-active');
+                    setTimeout(remove, 5000);
+                }
+            }
+        }
+
+        function remove() {
+            $api.removeCls(big, 'big-active');
+        }
+    </script>
+
+    <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </body>
+</html>

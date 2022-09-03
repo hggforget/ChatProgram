@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" type="text/css" href="aui-master/css/api.css" />
+    <link rel="stylesheet" href="aui-master/css/aui.css">
+    <link rel="stylesheet" href="css/test.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <style>
+        .aui-bar-tab {
+            position: static;
+        }
+        .search-input {
+            height: 1.6rem;
+            line-height: 1.6rem;
+            background: #f5f5f5;
+            border-radius: 30px;
+            position: relative;
+            font-family:"aui_iconfont" !important;
+            text-align: left;
+            padding-left: 1.5rem;
+            color: #999999;
+        }
+        .search-input:after {
+            position: absolute;
+            left: 0;
+            padding-left: 0.5rem;
+            content: "\e615";
+        }
+    </style>
+</head>
+<body>
+<script>
+    // 测试一下是否导入jquery成功
+    $(  // jQuery调用匿名函数
+        function(){  //匿名函数（功能：弹出123对话框）
+            alert(123);    //弹出123对话框（弹出则代表导入成功）
+        }
+    )
+</script>
+<script type="text/javascript" src="js/chat.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+    }
+    //点击放大代码
+    var letterSize; //单个字母的字体大小
+    var big = document.getElementById('big');
+    var menus;
+    var test2 = document.getElementById("test");
+    var x = test2.getElementsByTagName("a");
+
+    function change() {
+        // alert(1);
+        // alert($(obj).text());
+        //div点击事件
+        //把状态设为放大状态
+        for (var i = 0; i < x.length; i++) {
+            x[i].index = i;
+            x[i].onclick = function() {
+                for (var i = 0; i < x.length; i++) {
+                    x[i].style.color = "#BCBCBC";
+                }
+                x[this.index].style.color = "#F5862d";
+                var a = x[this.index].text;
+                $("#big").html(a);
+                $api.addCls(big, 'big-active');
+                setTimeout(remove, 5000);
+            }
+        }
+    }
+
+    function remove() {
+        $api.removeCls(big, 'big-active');
+    }
+</script>
+<script src="cordova.js"></script>
+</body>
+</html>
+
