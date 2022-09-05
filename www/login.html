@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link href="aui-master/css/aui.css" rel="stylesheet" type="text/css" />
+    <link href="css/login.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="js/login.js"></script>
+    <script type="text/javascript" src="jquery-3.5.1/jquery-3.5.1.js"></script>
+</head>
+<body>
+<section class="aui-flexView">
+    <!--
+    <header class="aui-navBar aui-navBar-fixed" style="border: 2px solid black">
+        <a href="javascript:;" class="aui-navBar-item">
+            <i class="icon icon-return"></i>
+        </a>
+        <div class="aui-center">
+            <span class="aui-center-title">dassda</span>
+        </div>
+        <a href="javascript:;" class="aui-navBar-item" >
+            <i class="icon icon-sys"></i>
+        </a>
+    </header>
+    -->
+    <section class="aui-scrollView">
+        <div class="aui-sign-form">
+            <div class="aui-sign-mode-switch">
+                <div class="aui-sign-mode-left aui-btn aui-btn-sm">登录</div>
+                <div class="aui-sign-mode-right aui-btn aui-btn-sm">注册</div>
+            </div>
+            <div class="aui-sign-head">
+                <img src="img/头像.jpg" alt="">
+            </div>
+            <div>
+                <div class="aui-flex">
+                    <i class="aui-iconfont aui-icon-my"></i>
+                    <div class="aui-flex-box">
+                        <input type="text" id="userID" autocomplete="off" placeholder="输入userID">
+                    </div>
+                </div>
+                <div class="aui-flex">
+                    <i class="aui-iconfont aui-icon-lock"></i>
+                    <div class="aui-flex-box">
+                        <input type="text"  id="pwd" autocomplete="off" placeholder="输入密码">
+                    </div>
+                    <!--
+                    <div class="aui-code">
+                        <input id="btnSendCode1" type="button" class="btn btn-default" value="获取验证码" onClick="sendMessage1()" />
+                    </div>
+                    -->
+                </div>
+                <div class="aui-sign-login aui-btn" onclick="login()">立即登录</div>
+                <div class="aui-flex aui-flex-clear">
+                    <div class="aui-flex-box">
+                        <a href="javascript:;">手机注册</a>
+                    </div>
+                    <div class="aui-links">
+                        <a href="javascript:;">忘记密码</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>
+
+

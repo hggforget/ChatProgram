@@ -35,11 +35,12 @@
     </style>
 </head>
 <body>
+<div style="height: 3rem;">
 <header class="aui-chat-header aui-bar aui-bar-nav aui-bar-warning aui-padded-10"style="position:fixed">
     <a class="aui-btn aui-btn-warning aui-pull-left" id="back">
         <i class="aui-iconfont aui-pull-left aui-icon-left"></i>
     </a>
-    <div class="aui-title" >黄宝</div>
+    <div class="aui-title" id="chatName">asdasd</div>
     <div class="aui-pull-right">
         <a class="aui-btn aui-btn-warning  aui-pull-left">
             <span class="aui-iconfont aui-icon-phone"></span>
@@ -48,80 +49,13 @@
             <span class="aui-iconfont aui-icon-menu"></span>
         </a>
     </div>
-
 </header>
-    <section class="aui-chat" style="display: flex;flex-direction: column;margin-top: 4rem;margin-bottom: 4rem;" id="out">
+</div>
+    <section class="aui-chat" style="display: flex;flex-direction: column;" id="out">
         <div class="aui-chat-header">2016年7月13日</div>
-        <div class="aui-chat-item aui-chat-left">
-            <div class="aui-chat-media">
-                <img src="img/头像.jpg" />
-            </div>
-            <div class="aui-chat-inner">
-                <div class="aui-chat-name">Anpu <span class="aui-label aui-label-warning">2.0</span></div>
-                <div class="aui-chat-content">
-                    <div class="aui-chat-arrow"></div>
-                    Hello AUI 2.0!
-                </div>
-                <div class="aui-chat-status aui-chat-status-refresh">
-                    <i class="aui-iconfont aui-icon-correct aui-text-success"></i>
-                </div>
-            </div>
-        </div>
-        <div class="aui-chat-item aui-chat-right">
-            <div class="aui-chat-media">
-                <img src="img/头像.jpg" />
-            </div>
-            <div class="aui-chat-inner">
-                <div class="aui-chat-name">Anpu </div>
-                <div class="aui-chat-content">
-                    <div class="aui-chat-arrow"></div>
-                    你好！
-                </div>
-                <div class="aui-chat-status">
-                    <i class="aui-iconfont aui-icon-info aui-text-danger"></i>
-                </div>
-            </div>
-        </div>
-        <div class="aui-chat-item aui-chat-left">
-            <div class="aui-chat-media">
-                <img src="img/头像.jpg" />
-            </div>
-            <div class="aui-chat-inner">
-                <div class="aui-chat-name">Anpu <span class="aui-label aui-label-warning">2.0</span></div>
-                <div class="aui-chat-content">
-                    <div class="aui-chat-arrow"></div>
-                    <img src="img/头像.jpg" />
-                </div>
-            </div>
-        </div>
-        <div class="aui-chat-item aui-chat-right">
-            <div class="aui-chat-media">
-                <img src="img/头像.jpg" />
-            </div>
-            <div class="aui-chat-inner">
-                <div class="aui-chat-name">Anpu </div>
-                <div class="aui-chat-content">
-                    <div class="aui-chat-arrow"></div>
-                    我嫩爹
-                </div>
-            </div>
-        </div>
-        <div class="aui-chat-item aui-chat-left">
-            <div class="aui-chat-media">
-                <img src="img/头像.jpg" />
-            </div>
-            <div class="aui-chat-inner">
-                <div class="aui-chat-name">Anpu <span class="aui-label aui-label-warning">2.0</span></div>
-                <div class="aui-chat-content">
-                    <div class="aui-chat-arrow"></div>
-                    <img src="img/头像.jpg" />
-                </div>
-            </div>
-        </div>
-
     </section>
 
-
+<div style="height: 3rem;">
 <footer class="aui-bar aui-bar-tab aui-margin-t-15 aui-margin-b-0" style="position:fixed">
     <div class="aui-bar-tab-item aui-padded-l-15 aui-padded-r-15" tapmode style="width: auto;">
         <div class="search-input aui-font-size-14" contenteditable="true" id="inputdata"></div>
@@ -130,6 +64,7 @@
         <span>发送</span>
     </div>
 </footer>
+</div>
 <!--
 <footer class="aui-nav aui-bar-tab" id="aui-chat-footer">
     <div class="aui-title aui-padded-10" >
@@ -154,40 +89,6 @@
 -->
 
 <script type="text/javascript" src="js/chat.js"></script>
-<script type="text/javascript">
-    apiready = function() {
-    }
-    //点击放大代码
-    var letterSize; //单个字母的字体大小
-    var big = document.getElementById('big');
-    var menus;
-    var test2 = document.getElementById("test");
-    var x = test2.getElementsByTagName("a");
-
-    function change() {
-        // alert(1);
-        // alert($(obj).text());
-        //div点击事件
-        //把状态设为放大状态
-        for (var i = 0; i < x.length; i++) {
-            x[i].index = i;
-            x[i].onclick = function() {
-                for (var i = 0; i < x.length; i++) {
-                    x[i].style.color = "#BCBCBC";
-                }
-                x[this.index].style.color = "#F5862d";
-                var a = x[this.index].text;
-                $("#big").html(a);
-                $api.addCls(big, 'big-active');
-                setTimeout(remove, 5000);
-            }
-        }
-    }
-
-    function remove() {
-        $api.removeCls(big, 'big-active');
-    }
-</script>
 <script src="cordova.js"></script>
 </body>
 </html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" type="text/css" href="aui-master/css/api.css" />
+    <link rel="stylesheet" type="text/css" href="aui-master/css/aui.2.0.css"/>
+    <link rel="stylesheet" href="aui-master/css/aui.css">
+    <link rel="stylesheet" href="css/test.css">
+    <script src="js/creategroup.js"></script>
+    <script src="jquery-3.5.1/jquery-3.5.1.js"></script>
+    <script src="cordova.js"></script>
+    <title>creategroup</title>
+</head>
+<body>
+<div class="aui-searchbar" id="search" style="height:4rem;">
+    <a class="aui-btn  aui-pull-left aui-margin-l-15" style="background: #ffffff;">
+        <i class="aui-iconfont aui-pull-left aui-icon-left" onclick="jump()"></i>
+    </a>
+    <div class="aui-searchbar-input aui-border-radius">
+        <i class="aui-iconfont aui-icon-qq aui-pull-left"></i>
+        <input type="text" placeholder="群聊名" id="search-input" class="aui-pull-left">
+        <div class="aui-searchbar-clear-btn">
+            <i class="aui-iconfont aui-icon-close"></i>
+        </div>
+    </div>
+    <div class="aui-searchbar-btn" tapmode onclick="creategroup()">创建</div>
+</div>
+<div class="aui-clearfix"style="margin-top: 4rem;">
+<!-- 通讯录 -->
+<div class="contacts"></div>
+<div class="aui-card-list" style="display: block">
+    <div class="aui-card-list-content">
+        <ul class="aui-list aui-media-list" id="contacts">
+
+        </ul>
+    </div>
+</div>
+</div>
+<div style="height: 3rem;">
+    <footer class="aui-nav aui-bar-tab" id="aui-footer" style="position: fixed">
+        <div class="aui-col-xs-3 aui-text-center active-warning">
+            <span class="aui-iconfont aui-icon-comment" ></span>
+            <p class="aui-text-center aui-font-size-12">消息</p>
+        </div>
+        <div class="aui-col-xs-3 aui-text-center">
+            <span class="aui-iconfont aui-icon-search"></span>
+            <p class="aui-text-center aui-font-size-12">搜索</p>
+        </div>
+        <div class="aui-col-xs-3 aui-text-center">
+            <span class="aui-iconfont aui-icon-my"></span>
+            <p class="aui-text-center aui-font-size-12">联系人</p>
+        </div>
+        <div class="aui-col-xs-3 aui-text-center">
+            <span class="aui-iconfont aui-icon-more"></span>
+            <p class="aui-text-center aui-font-size-12">更多</p>
+        </div>
+    </footer>
+</div>
+<script type="text/javascript" src="aui-master/script/api.js" ></script>
+<script type="text/javascript">
+    apiready = function(){
+        api.parseTapmode();
+    }
+    var searchBar = document.querySelector(".aui-searchbar");
+    var searchBarInput = document.querySelector(".aui-searchbar input");
+    var searchBarBtn = document.querySelector(".aui-searchbar .aui-searchbar-btn");
+    var searchBarClearBtn = document.querySelector(".aui-searchbar .aui-searchbar-clear-btn");
+    if(searchBar){
+        searchBarInput.onclick = function(){
+            searchBarBtn.style.marginRight = 0;
+        }
+    }
+    searchBarClearBtn.onclick = function(){
+        this.style.display = 'none';
+        searchBarInput.value = '';
+        searchBarBtn.classList.remove("aui-text-info");
+        searchBarBtn.textContent = "取消";
+    }
+    searchBarBtn.onclick = function(){
+        creategroup();
+    }
+</script>
+<script type="text/javascript" src="../script/aui-range.js" ></script>
+<script type="text/javascript">
+    var range = new auiRange({
+        element:document.getElementById("range")
+    },function(ret){
+    })
+    apiready = function(){
+        api.parseTapmode();
+    }
+
+</script>
+
+</body>
+</html>
