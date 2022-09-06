@@ -23,6 +23,7 @@ function jump(){
 var userID=getUrlParam('userID');
 var userName=getUrlParam('userName');
 var chatType=getUrlParam('chatType');
+var myimg=getUrlParam("myimg");
 if(chatType=="contact")
 {
     var firendName=getUrlParam('friendName');
@@ -33,12 +34,13 @@ else
     var groupName=getUrlParam('groupName');
     document.getElementById("chatName").innerText=groupName;
 }
-function sendmessage(msg){
+function sendright(msg)
+{
     var toast;
     toast = '\
                <div class="aui-chat-item aui-chat-right">\
                     <div class="aui-chat-media">\
-                         <img src="img/头像.jpg"/>\
+                         <img src="'+myimg+'"/>\
                     </div>\
                 <div class="aui-chat-inner">\
                      <div class="aui-chat-name">'+userName+'</div>\
@@ -50,6 +52,31 @@ function sendmessage(msg){
                             </div>\
         ';
     $("#out").append(toast);
+}
+function sendleft(from,msg,friendimg)
+{
+    var toappend;
+    toappend = '\
+       <div class="aui-chat-item aui-chat-left">\
+        <div class="aui-chat-media">\
+        <img src="'+friendimg+'" />\
+        </div>\
+    <div class="aui-chat-inner">\
+        <div class="aui-chat-name">'+from+'<span class="aui-label aui-label-warning">2.0</span></div>\
+        <div class="aui-chat-content">\
+            <div class="aui-chat-arrow"></div>\
+            ' + msg + '\
+        </div>\
+        <div class="aui-chat-status aui-chat-status-refresh">\
+            <i class="aui-iconfont aui-icon-correct aui-text-success"></i>\
+        </div>\
+    </div>\
+</div>\
+    ';
+    $("#out").append(toappend);
+}
+function sendmessage(msg){
+    sendright(msg);
     if(chatType=="contact")
     {
         var jsonmsg = JSON.stringify({
@@ -72,10 +99,26 @@ function sendmessage(msg){
         ws.send(jsonmsg);
     }
 }
+function queryCon(){
+    if(chatType=="contact") {
+        var jsonmsg = JSON.stringify({
+            type: "queryCon",
+            userID: userID,
+            friendID: getUrlParam('friendID'),
+        });
+    }
+    else{
+        var jsonmsg = JSON.stringify({
+            type: "queryGroupMsg",
+            userID: userID,
+            groupID: getUrlParam('groupID'),
+        });
+    }
+    ws.send(jsonmsg);
+}
 if ('WebSocket' in window) {
     var ws = new WebSocket("ws://192.168.131.107:8080/websocket/"+userID);
 }
-
 else {
     alert('当前浏览器 Not support websocket');
 }
@@ -85,35 +128,43 @@ ws.addEventListener("error",onerror,false);
 ws.addEventListener("close",onclose,false);
 function onopen() {
     console.log("connected");
+    queryCon();
   //  sendmessage('hello');        // transmit "hello" after connecting
 }
 function onmessage(event) {
     var json=$.parseJSON(event.data);
     var type=json.type;
-    var msg=json.msg;
-    var srcName=json.srcName;
     if(type=="txMsg") {
-        var toappend;
-        toappend = '\
-       <div class="aui-chat-item aui-chat-left">\
-        <div class="aui-chat-media">\
-        <img src="img/头像.jpg" />\
-        </div>\
-    <div class="aui-chat-inner">\
-        <div class="aui-chat-name">'+srcName+'<span class="aui-label aui-label-warning">2.0</span></div>\
-        <div class="aui-chat-content">\
-            <div class="aui-chat-arrow"></div>\
-            ' + msg + '\
-        </div>\
-        <div class="aui-chat-status aui-chat-status-refresh">\
-            <i class="aui-iconfont aui-icon-correct aui-text-success"></i>\
-        </div>\
-    </div>\
-</div>\
-    ';
-        $("#out").append(toappend);
+        var srcName=json.srcName;
+        var msg=json.msg;
+        var srcimg=json.srcimg;
+        sendleft(srcName,msg,srcimg);
     }
+    else if(type=="conMsg" || type=="groupMsg")
+    {
+        var from=json.from;
+        var fromName=json.fromName;
+        var msg=json.msg;
+        var img=json.friendimg;
+        for(var i=0;i<from.length;i++)
+        {
+            if(from[i]==userID)
+                sendright(msg[i]);
+            else
+            {
+                if(type=="conMsg")
+                {
+                    sendleft(fromName,msg[i],img[i]);
+                }
+                else
+                {
+                    sendleft(fromName[i],msg[i],img[i]);
+                }
 
+            }
+
+        }
+    }
 }
 
 function onerror () {

@@ -35,15 +35,18 @@ function onmessage(event) {
     {
         idlist=json.idlist;
         namelist=json.namelist;
+        imglist=json.imglist;
         for(var i=0;i<idlist.length;i++)
         {
+            if(idlist[i]==userID)
+                continue;
             var contact='\
             <li class="aui-list-item aui-list-item-middle aui-clearfix aui-padded-l-15 aui-padded-r-15">\
     <!--  <p class="letter_left_single color_white" id="first">#</p>-->\
     <div class="aui-media-list-item-inner">\
     <label><input class="aui-radio" type="checkbox" name="check" value="'+idlist[i]+'"></label>\
     <div class="aui-list-item-media">\
-    <img src="img/头像.jpg" class="aui-img-round aui-list-img-sm">\
+    <img src="'+imglist[i]+'" class="aui-img-round aui-list-img-sm">\
     <!--<i class="aui-iconfont aui-icon-qq" style="font-size:30px; color: red;"></i>-->\
     </div>\
 <div class="aui-list-item-inner">\
@@ -62,14 +65,6 @@ function onmessage(event) {
             $("#contacts").append(contact);
         }
     }
-    else if(type=="addRet")
-    {
-        var ret=json.ret;
-        if(ret==-1)
-            alert("已添加该好友");
-        else
-            alert("添加成功");
-    }
 }
 
 function onerror () {
@@ -78,14 +73,6 @@ function onerror () {
 
 function onclose (event) {
     alert('close code=' + event.code);
-}
-function add(index){
-    var jsonmsg = JSON.stringify({
-        type: "addFriend",
-        userID:userID,
-        friendID: idlist[index],
-    });
-    ws.send(jsonmsg);
 }
 function jump(){
     window.location.href="index.html?userID="+userID;
@@ -99,6 +86,7 @@ function creategroup(){
                 checkbox.push(obj[i].value);
             }
         }
+        checkbox.push(userID);
     var jsonmsg = JSON.stringify({
         type: "createGroup",
         userID: userID,
@@ -106,5 +94,5 @@ function creategroup(){
         members:checkbox,
     });
     ws.send(jsonmsg);
-    alert("创建成功");
+    window.location.href="index.html?userID="+userID;
 }

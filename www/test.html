@@ -34,13 +34,17 @@
     </style>
 </head>
 <body>
+<!--选择文件的input-->
+<input type="file" class="imgInput" />
+
+<!--用来显示图片的div，自定义样式-->
+<div>
+    <img src="" class="img" />
+</div>
 <script>
-    // 测试一下是否导入jquery成功
-    $(  // jQuery调用匿名函数
-        function(){  //匿名函数（功能：弹出123对话框）
-            alert(123);    //弹出123对话框（弹出则代表导入成功）
-        }
-    )
+    $(".imgInput").change(function(){
+        $(".img").attr("src",URL.createObjectURL($(this)[0].files[0]));
+    });
 </script>
 <script type="text/javascript" src="js/chat.js"></script>
 <script type="text/javascript">

@@ -7,6 +7,7 @@ function getUrlParam(name)
 var userID=getUrlParam('userID');
 var namelist;
 var idlist;
+var imglist;
 if ('WebSocket' in window) {
     var ws = new WebSocket("ws://192.168.131.107:8080/websocket/"+userID);
 }
@@ -35,14 +36,17 @@ function onmessage(event) {
     {
         idlist=json.idlist;
         namelist=json.namelist;
+        imglist=json.imglist;
         for(var i=0;i<idlist.length;i++)
         {
+            if(idlist[i]==userID)
+                continue;
             var contact='\
             <li class="aui-list-item aui-list-item-middle aui-clearfix aui-padded-l-15 aui-padded-r-15" onclick="add('+i+')">\
     <!--  <p class="letter_left_single color_white" id="first">#</p>-->\
     <div class="aui-media-list-item-inner">\
     <div class="aui-list-item-media">\
-    <img src="img/头像.jpg" class="aui-img-round aui-list-img-sm">\
+    <img src="'+imglist[i]+'" class="aui-img-round aui-list-img-sm">\
     <!--<i class="aui-iconfont aui-icon-qq" style="font-size:30px; color: red;"></i>-->\
     </div>\
 <div class="aui-list-item-inner">\

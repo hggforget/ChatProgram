@@ -9,7 +9,6 @@
     <meta name="color-scheme" content="light dark">
     <link href="aui-master/css/aui.css" rel="stylesheet" type="text/css" />
     <link href="css/login.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="js/login.js"></script>
     <script type="text/javascript" src="jquery-3.5.1/jquery-3.5.1.js"></script>
 </head>
 <body>
@@ -30,17 +29,18 @@
     <section class="aui-scrollView">
         <div class="aui-sign-form">
             <div class="aui-sign-mode-switch">
-                <div class="aui-sign-mode-left aui-btn aui-btn-sm" style="background: #ededed;color: #666;">登录</div>
-                <div class="aui-sign-mode-right aui-btn aui-btn-sm" onclick="jump()">注册</div>
+                <div class="aui-sign-mode-left aui-btn aui-btn-sm"   onclick="jump()">登录</div>
+                <div class="aui-sign-mode-right aui-btn aui-btn-sm" style="background: #ededed;color: #666;">注册</div>
             </div>
             <div class="aui-sign-head">
-                <img src="img/头像.jpg" alt="">
+                <input class="imgInput" type="file" style="display: none"/>
+                <img src="img/头像.jpg" alt="" onclick="uploadphoto()" class="img" style="height: 5rem;border-radius: 50%"/>
             </div>
             <div>
                 <div class="aui-flex">
                     <i class="aui-iconfont aui-icon-my"></i>
                     <div class="aui-flex-box">
-                        <input type="text" id="userID" autocomplete="off" placeholder="输入userID">
+                        <input type="text" id="userName" autocomplete="off" placeholder="输入userName">
                     </div>
                 </div>
                 <div class="aui-flex">
@@ -54,7 +54,18 @@
                     </div>
                     -->
                 </div>
-                <div class="aui-sign-login aui-btn" onclick="login()">立即登录</div>
+                <div class="aui-flex">
+                    <i class="aui-iconfont aui-icon-lock"></i>
+                    <div class="aui-flex-box">
+                        <input type="password"  id="confirm" autocomplete="off" placeholder="确认密码">
+                    </div>
+                    <!--
+                    <div class="aui-code">
+                        <input id="btnSendCode1" type="button" class="btn btn-default" value="获取验证码" onClick="sendMessage1()" />
+                    </div>
+                    -->
+                </div>
+                <div class="aui-sign-login aui-btn" onclick="register()">确认注册</div>
                 <div class="aui-flex aui-flex-clear">
                     <div class="aui-flex-box">
                         <a href="javascript:;">手机注册</a>
@@ -67,6 +78,10 @@
         </div>
     </section>
 </section>
+<script type="text/javascript" src="js/register.js"></script>
+<script>
+
+</script>
 </body>
 </html>
 

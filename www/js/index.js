@@ -38,8 +38,10 @@ var namelist;
 var idlist;
 var groupNamelist;
 var groupIDlist;
+var myimg;
+var imgs;
 function jump(index){
-    window.location.href=encodeURI("chat.html?chatType=contact&userID="+userID+"&friendID="+idlist[index]+"&userName="+userName+"&friendName="+namelist[index]);
+    window.location.href=encodeURI("chat.html?chatType=contact&userID="+userID+"&friendID="+idlist[index]+"&userName="+userName+"&friendName="+namelist[index]+"&myimg="+myimg);
 }
 var userID=getUrlParam('userID');
 if ('WebSocket' in window) {
@@ -95,13 +97,16 @@ function onmessage(event) {
     if(type=="MyData")
     {
         userName=json.userName;
+        myimg=json.img;
         var userNamediv=document.getElementById("userName");
         userNamediv.innerText=userName;
+        $("#myimg").attr("src",myimg);
     }
     else if(type=="FriendList")
     {
         namelist=json.friendsName;
         idlist=json.friendsID;
+        imgs=json.friendsimg;
         for(var i=0;i<namelist.length;i++)
         {
             var contact='\
@@ -109,7 +114,7 @@ function onmessage(event) {
     <!--  <p class="letter_left_single color_white" id="first">#</p>-->\
     <div class="aui-media-list-item-inner">\
     <div class="aui-list-item-media">\
-    <img src="img/头像.jpg" class="aui-img-round aui-list-img-sm">\
+    <img src="'+imgs[i]+'" class="aui-img-round aui-list-img-sm" style="object-fit: cover;">\
     <!--<i class="aui-iconfont aui-icon-qq" style="font-size:30px; color: red;"></i>-->\
     </div>\
 <div class="aui-list-item-inner">\
@@ -121,7 +126,7 @@ function onmessage(event) {
             </div>\
             <div class="aui-list-item-text">'+idlist[i]+'</div>\
         </div>\
-        <a href="tel:10086">\
+        <a href="">\
             <div class="aui-list-item-right icon-more-info">\
                 <i class="aui-iconfont aui-icon-phone" style="font-size:20px; color: red;"></i>\
             </div>\
@@ -186,5 +191,5 @@ function addfriend(){
     window.location.href="addfriend.html?userID="+userID;
 }
 function groupchat(index){
-    window.location.href=encodeURI("chat.html?chatType=group&userID="+userID+"&groupID="+groupIDlist[index]+"&userName="+userName+"&groupName="+groupNamelist[index]);
+    window.location.href=encodeURI("chat.html?chatType=group&userID="+userID+"&groupID="+groupIDlist[index]+"&userName="+userName+"&groupName="+groupNamelist[index]+"&myimg="+myimg);
 }
