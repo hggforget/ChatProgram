@@ -117,7 +117,7 @@ function queryCon(){
     ws.send(jsonmsg);
 }
 if ('WebSocket' in window) {
-    var ws = new WebSocket("ws://192.168.131.107:8080/websocket/"+userID);
+    var ws = new WebSocket("ws://192.168.10.105:8080/websocket/"+userID);
 }
 else {
     alert('当前浏览器 Not support websocket');
@@ -154,7 +154,7 @@ function onmessage(event) {
             {
                 if(type=="conMsg")
                 {
-                    sendleft(fromName,msg[i],img[i]);
+                    sendleft(fromName,msg[i],img);
                 }
                 else
                 {

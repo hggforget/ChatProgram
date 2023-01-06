@@ -14,7 +14,7 @@
             <activity android:usesCleartextTraffic="true" />
         </edit-config>
         <!--  android:usesCleartextTraffic="true"是必须的    -->
-        <icon src="res/icon/android/huangbao.jpg"/>
+        <!-- <icon src="res/icon/android/huangbao.jpg"/>  -->
     </platform>
     <!--    跨域cors    -->
     <preference name="AndroidInsecureFileModeEnabled" value="true" />
